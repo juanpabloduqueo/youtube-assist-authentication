@@ -33,10 +33,20 @@ def create_vector_from_youtube_url(video_url: str, language: str) -> FAISS:
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
         docs = text_splitter.split_documents(transcript)
         
+        
+        if not embeddings:
+            raise ValueError("Embeddings list is empty. There might be an issue with the transcript or language processing.")
+
+        
         db = FAISS.from_documents(docs, embeddings)
         return db
+    
+    except IndexError as e:
+        st.error(f"IndexError occurred: {str(e)}")
+        raise ValueError("Error creating vector from YouTube URL (List index out of range)")
     except Exception as e:
-        raise ValueError(f"Error creating vector from YouTube URL (Language not supported): {e}")
+        st.error(f"An error occurred: {str(e)}")
+        raise ValueError(f"Error creating vector from YouTube URL: {str(e)}")
 
 def get_response_from_query(db, query, language,k=4):
     """
