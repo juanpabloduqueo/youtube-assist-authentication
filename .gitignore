@@ -129,6 +129,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+# Ignore secrets.toml in the .streamlit folder
+.streamlit/secrets.toml
+secrets.toml
 
 # Spyder project settings
 .spyderproject
