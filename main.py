@@ -1,7 +1,7 @@
 import streamlit as st
 import lchelper as lch
 import textwrap
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 #import os
 
 # load_dotenv()
