@@ -2,13 +2,17 @@ import streamlit as st
 import lchelper as lch
 import textwrap
 from dotenv import load_dotenv
-import os
+#import os
 
-load_dotenv()
+# load_dotenv()
+
+# # User authentication
+# USERNAME = os.getenv("USERNAME")
+# PASSWORD = os.getenv("PASSWORD")
 
 # User authentication
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
+USERNAME = st.secrets["USERNAME"]
+PASSWORD = st.secrets["PASSWORD"]
 
 if not USERNAME or not PASSWORD:
     st.error("Please provide a valid username and password")
