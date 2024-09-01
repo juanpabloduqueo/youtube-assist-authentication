@@ -9,9 +9,11 @@ import streamlit as st
 
 # load_dotenv()
 
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+#openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-embeddings = OpenAIEmbeddings()
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+
+embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 video_url = "https://youtu.be/-Osca2Zax4Y?si=RE045YHRPMfA7oR5"
 
 def create_vector_from_youtube_url(video_url: str, language: str) -> FAISS:
